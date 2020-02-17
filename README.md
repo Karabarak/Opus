@@ -29,7 +29,7 @@ Once done we need to install all dependencies. In root folder of the repo run co
 ```
 npm i
 ```
-This will install all backend dependencies. Now navigate to client folder and run the same command.
+This will install all backend dependencies. Now navigate to /client folder and run the same command.
 This will install all frontend dependencies. Once done, navigate back to root folder and run command:
 ```
 npm run dev
