@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://opus:Opus1@cluster0-tkhze.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "jwtsecrettoken"
+}

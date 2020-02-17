@@ -1,0 +1,31 @@
+{
+  "name": "opus_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "lint": "eslint ./",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.5",
+    "eslint-config-airbnb": "^18.0.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.0"
+  }
+}
