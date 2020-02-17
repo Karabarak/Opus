@@ -43,6 +43,7 @@ Requirements met:
 * Using JSON Web Token for authentication
 * App is using scripts
 * Possibility to Register, Log in, view all users, delete users, see users details.
+
 Requirements not met:
 * Using only javascript
 * Email validation not implemented
