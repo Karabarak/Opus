@@ -9,7 +9,7 @@ import { getUsers } from '../../actions/user';
 const Users = ({ getUsers, auth: { user }, users: { users, loading } }) => {
     useEffect(() => {
         getUsers();
-    }, [getUsers]);
+    });
 
     return loading || users == null ? <Spinner/> : <Fragment>
         <p className='lead'>
