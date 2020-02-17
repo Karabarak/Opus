@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 You need to have nodejs and git installed on your computer.
 
 Go to https://nodejs.org/ to download latest recommended version and install it.
-Go to https://git-scm.com/downloads to download version for your OS and isntall it.
+Go to https://git-scm.com/downloads to download version for your OS and install it.
 
 
 
