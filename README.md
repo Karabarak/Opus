@@ -49,3 +49,4 @@ Requirements not met:
 * Email validation not implemented
 * Frontend localization not implemented
 * Users login log in user details view not implemented
+* Password recovery not implemented
