@@ -36,3 +36,15 @@ npm run dev
 ```
 This will run a script which will run frontend and backend at the same time on localhost.
 Now you should be able to check out the app! Have fun!
+## About app requirements
+Requirements met:
+* Backend with node API(express)
+* Frontend SPA with REACT + Redux
+* Using JSON Web Token for authentication
+* App is using scripts
+* Possibility to Register, Log in, view all users, delete users, see users details.
+Requirements not met:
+* Using only javascript
+* Email validation not implemented
+* Frontend localization not implemented
+* Users login log in user details view not implemented
