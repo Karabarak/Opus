@@ -50,3 +50,8 @@ Requirements not met:
 * Frontend localization not implemented
 * Users login log in user details view not implemented
 * Password recovery not implemented
+
+Additionally:
+* Frontend is responsive
+* Using fontawesome for additional beauty
+* Using mongoDB(mongoDB Atlas)
