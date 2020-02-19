@@ -10,10 +10,15 @@ const UserDetails = ({ getUser, match, users: { userDetails, loading} }) => {
         getUser(match.params.id);
     }, [getUser]);
 
+    const log = userDetails && userDetails.log.map((time) => (
+        <p>{time}</p>
+    ))
+
     return loading || userDetails == null ? <Spinner/> : <Fragment>
         <p className='lead'>
-            <i className="fa fa-user"></i> User { userDetails && userDetails.email } details
+            <i className="fa fa-user"></i> User { userDetails && userDetails.email } log:
         </p>
+        { log }
         <Link to='/users' className='btn btn-light'>Back</Link>
     </Fragment>;
 };

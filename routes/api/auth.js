@@ -61,6 +61,9 @@ async (req, res) => {
             }
         };
 
+        user.log.push(new Date());
+        user.save();
+
         jwt.sign(
             payload,
             config.get('jwtSecret'),

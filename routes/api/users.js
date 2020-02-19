@@ -73,7 +73,7 @@ async (req, res) => {
 // @access Private
 router.get('/', auth, async (req, res) => {
     try {
-        const users = await User.find().select('-password');
+        const users = await User.find().select('-password -log');
         res.json(users);
     }
     catch (err) {
