@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteUser } from '../../actions/user';
 
-const User = ({ deleteUser, user, currentUser }) => {
-    const users = user.map((u, i) => (
+const User = ({ deleteUser, users, currentUser }) => {
+    const userList = users.map((u, i) => (
         <tr key={u._id}>
             <td>{i + 1}</td>
             <td>{u.email}</td>
@@ -13,7 +13,8 @@ const User = ({ deleteUser, user, currentUser }) => {
                 <Link to={`/user-details/${u._id}`} className='btn btn-primary'>
                 Details
                 </Link>
-                <button onClick={() => deleteUser(u._id, currentUser._id)} className="btn btn-danger">Delete</button>
+
+                <button onClick={() => (deleteUser(u._id, currentUser._id, users))} className="btn btn-danger">Delete</button>
             </td>
         </tr>
     ));
@@ -28,7 +29,7 @@ const User = ({ deleteUser, user, currentUser }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users}
+                    {userList}
                 </tbody>
             </table>
         </Fragment>
@@ -36,7 +37,7 @@ const User = ({ deleteUser, user, currentUser }) => {
 }
 
 User.propTypes = {
-    user: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired,
     deleteUser: PropTypes.func.isRequired,
     currentUser: PropTypes.object
 };

@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
     case DELETE_USER:
         return {
             ...state,
-            ...payload,
+            users: payload,
             loading: false
         };
     case USERS_ERROR:

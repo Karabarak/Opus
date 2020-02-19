@@ -12,7 +12,7 @@ const UserDetails = ({ getUser, match, users: { userDetails, loading} }) => {
 
     const log = userDetails && userDetails.log.map((time) => (
         <p>{time}</p>
-    ))
+    ));
 
     return loading || userDetails == null ? <Spinner/> : <Fragment>
         <p className='lead'>

@@ -17,7 +17,8 @@ export const getUsers = () => async dispatch => {
         const res = await axios.get('/api/users');
         dispatch({
             type: GET_USERS,
-            payload: res.data
+            payload: res.data,
+            loading: false
         });
     }
     catch (err) {
@@ -71,13 +72,16 @@ export const createUser = ({ email, password }) => async (dispatch) => {
 };
 
 // Delete user
-export const deleteUser = (id, currentUserId) => async (dispatch) => {
+export const deleteUser = (id, currentUserId, users) => async (dispatch) => {
     if(window.confirm('Are you sure?')) {
         try {
             const res = await axios.delete(`/api/users/${id}`);
+
+            const updatedUsers = users.filter((user) => user._id !== res.data.oldUserId);
+
             dispatch({
                 type: DELETE_USER,
-                payload: res.data
+                payload: updatedUsers
             });
 
             dispatch(setAlert('User Deleted', 'success'));

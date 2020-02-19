@@ -157,7 +157,7 @@ router.post(
 // @access Private
 router.delete('/:id', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await (await User.findById(req.params.id));
 
         if (!user) {
             return res.status(404).json({ msg: 'User not found' });
@@ -165,7 +165,7 @@ router.delete('/:id', auth, async (req, res) => {
 
         await user.remove();
 
-        res.json({ msg: 'User deleted' });
+        res.json({ oldUserId: user._id, msg: 'User deleted' });
     }
     catch (err) {
         console.log(err.message);

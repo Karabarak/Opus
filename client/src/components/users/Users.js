@@ -9,7 +9,7 @@ import { getUsers } from '../../actions/user';
 const Users = ({ getUsers, auth: { user }, users: { users, loading } }) => {
     useEffect(() => {
         getUsers();
-    });
+    }, []);
 
     return loading || users == null ? <Spinner/> : <Fragment>
         <p className='lead'>
@@ -19,7 +19,7 @@ const Users = ({ getUsers, auth: { user }, users: { users, loading } }) => {
         <Link to='/create-user' className='btn btn-primary my-1'>
             Create User
         </Link>
-        <User user={ users } currentUser= { user }/>
+        <User users={ users } currentUser= { user }/>
     </Fragment>;
 };
 
