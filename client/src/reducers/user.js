@@ -25,7 +25,9 @@ export default function (state = initialState, action) {
         };
     case GET_USER_ERROR:
         return {
-
+            ...state,
+            loading: false,
+            error: payload
         };
     case RESET_USER:
         return initialState;

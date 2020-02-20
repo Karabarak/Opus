@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { loadUser } from './auth';
 import {
     GET_USERS,
     GET_USER,
@@ -38,13 +37,13 @@ export const getUsers = () => async dispatch => {
 export const getUser = (id) => async (dispatch) => {
     try {
         const res = await axios.get(`/api/users/${id}`);
-        console.log(res.data);
         dispatch({
             type: GET_USER,
             payload: res.data
         });
     }
     catch (err) {
+        console.log(err);
         dispatch({
             type: GET_USER_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }

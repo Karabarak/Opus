@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getUser } from '../../actions/user';
+import { setAlert } from '../../actions/alert';
 
-const UserDetails = ({ getUser, match, user: { userDetails, loading } }) => {
+const UserDetails = ({ setAlert, getUser, match, user: { userDetails, loading, error } }) => {
     useEffect(() => {
         getUser(match.params.id);
     }, [getUser, match.params.id]);
+
+    if (error.msg) {
+        setAlert(error.msg, 'danger');
+    }
 
     const { email, log } = userDetails;
     const logList = log.map((logEntry, i) => (
@@ -26,11 +31,12 @@ const UserDetails = ({ getUser, match, user: { userDetails, loading } }) => {
 
 UserDetails.propTypes = {
     getUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    setAlert: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
     user: state.user
 });
 
-export default connect(mapStateToProps, { getUser })(UserDetails);
+export default connect(mapStateToProps, { getUser, setAlert })(UserDetails);
