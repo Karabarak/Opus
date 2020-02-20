@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import history from '../history';
 import {
     GET_USERS,
     GET_USER,
@@ -43,7 +44,6 @@ export const getUser = (id) => async (dispatch) => {
         });
     }
     catch (err) {
-        console.log(err);
         dispatch({
             type: GET_USER_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -65,6 +65,7 @@ export const createUser = ({ email, password }) => async (dispatch) => {
         await axios.post('api/users/user', body, config);
 
         dispatch(setAlert('User Created', 'success'));
+        history.push('/');
     }
     catch (err) {
         const errors = err.response.data.errors;
