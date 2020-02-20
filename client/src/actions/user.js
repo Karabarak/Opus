@@ -82,10 +82,10 @@ export const createUser = ({ email, password }) => async (dispatch) => {
 
 // Delete user
 export const deleteUser = (id, currentUserId, users) => async (dispatch) => {
-    if(window.confirm('Are you sure?')) {
+    if (window.confirm('Are you sure?')) {
         try {
             const res = await axios.delete(`/api/users/${id}`);
-
+            console.log(res.data.notificationRes);
             const updatedUsers = users.filter((user) => user._id !== res.data.oldUserId);
 
             dispatch({

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
+const email = require('../../middleware/email');
 
 const router = new express.Router();
 
@@ -155,23 +156,22 @@ router.post(
 // @route  DELETE api/users/:id
 // @desc   Delete a user
 // @access Private
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', [auth, email], async (req, res) => {
     try {
-        const user = await (await User.findById(req.params.id));
+        // const user = await (await User.findById(req.params.id));
 
-        if (!user) {
-            return res.status(404).json({ msg: 'User not found' });
-        }
-
+        // if (!user) {
+        //     return res.status(404).json({ msg: 'User not found' });
+        // }
+        const { user } = req;
+        const { notificationRes } = req;
         await user.remove();
-
-        res.json({ oldUserId: user._id, msg: 'User deleted' });
+        res.json({ oldUserId: user._id, notificationRes, msg: 'User deleted' });
     }
     catch (err) {
-        console.log(err.message);
-        if (err.kind === 'ObjectId') {
-            return res.status(404).json({ msg: 'User not found' });
-        }
+        // if (err.kind === 'ObjectId') {
+        //     return res.status(404).json({ msg: 'User not found' });
+        // }
         res.status(500).send('Server error');
     }
 });
