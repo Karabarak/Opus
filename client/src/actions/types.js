@@ -12,4 +12,7 @@ export const USERS_ERROR = 'USERS_ERROR';
 export const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 export const DELETE_USER = 'DELETE_USER';
 export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';
-export const USER_DETAILS = 'USER_DETAILS';
+
+export const GET_USER = 'GET_USER';
+export const GET_USER_ERROR = 'GET_USER_ERROR';
+export const RESET_USER = 'RESET_USER';

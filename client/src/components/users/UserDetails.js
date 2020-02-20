@@ -1,35 +1,36 @@
-import React, { Fragment, useEffect, useState, Profiler} from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getUser } from '../../actions/user';
 
-const UserDetails = ({ getUser, match, users: { userDetails, loading} }) => {
+const UserDetails = ({ getUser, match, user: { userDetails, loading } }) => {
     useEffect(() => {
         getUser(match.params.id);
-    }, [getUser]);
+    }, [getUser, match.params.id]);
 
-    const log = userDetails && userDetails.log.map((time) => (
-        <p>{time}</p>
+    const { email, log } = userDetails;
+    const logList = log.map((logEntry, i) => (
+        <p key={i}>{logEntry}</p>
     ));
 
     return loading || userDetails == null ? <Spinner/> : <Fragment>
         <p className='lead'>
-            <i className="fa fa-user"></i> User { userDetails && userDetails.email } log:
+            <i className="fa fa-user"></i> User { email } log:
         </p>
-        { log }
+        { logList }
         <Link to='/users' className='btn btn-light'>Back</Link>
     </Fragment>;
 };
 
 UserDetails.propTypes = {
     getUser: PropTypes.func.isRequired,
-    users: PropTypes.object.isRequired
-}
+    user: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state) => ({
-    users: state.users
+    user: state.user
 });
 
 export default connect(mapStateToProps, { getUser })(UserDetails);

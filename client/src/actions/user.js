@@ -3,12 +3,14 @@ import { setAlert } from './alert';
 import { loadUser } from './auth';
 import {
     GET_USERS,
+    GET_USER,
+    GET_USER_ERROR,
+    RESET_USER,
     USERS_ERROR,
     CREATE_USER_ERROR,
     DELETE_USER,
     DELETE_USER_ERROR,
-    LOGOUT,
-    USER_DETAILS
+    LOGOUT
 } from './types';
 
 // Get all users
@@ -19,6 +21,9 @@ export const getUsers = () => async dispatch => {
             type: GET_USERS,
             payload: res.data,
             loading: false
+        });
+        dispatch({
+            type: RESET_USER
         });
     }
     catch (err) {
@@ -32,14 +37,18 @@ export const getUsers = () => async dispatch => {
 // Get one user
 export const getUser = (id) => async (dispatch) => {
     try {
-
         const res = await axios.get(`/api/users/${id}`);
+        console.log(res.data);
         dispatch({
-            type: USER_DETAILS,
+            type: GET_USER,
             payload: res.data
-        })
+        });
     }
     catch (err) {
+        dispatch({
+            type: GET_USER_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
     }
 };
 

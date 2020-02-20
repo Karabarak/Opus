@@ -3,8 +3,7 @@ import {
     USERS_ERROR,
     CREATE_USER_ERROR,
     DELETE_USER_ERROR,
-    DELETE_USER,
-    USER_DETAILS
+    DELETE_USER
 } from '../actions/types';
 
 const initialState = {
@@ -17,12 +16,6 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-    case USER_DETAILS:
-        return {
-            ...state,
-            userDetails: payload,
-            loading: false
-        };
     case GET_USERS:
         return {
             ...state,
