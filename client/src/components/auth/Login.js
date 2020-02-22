@@ -2,7 +2,9 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Translate } from 'react-localize-redux';
 import { login } from '../../actions/auth';
+
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -26,13 +28,13 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1 className='large text-primary'>Sign In</h1>
-            <p className='lead'><i className='fas fa-user'></i> Sign Into Your Account</p>
+            <h1 className='large text-primary'><Translate id='login.signInHead' /></h1>
+            <p className='lead'><i className='fas fa-user'></i> <Translate id='login.signInP' /></p>
             <form className='form' onSubmit={(e) => onSubmit(e)}>
                 <div className='form-group'>
                     <input
                         type='email'
-                        placeholder='Email Address'
+                        placeholder='Email'
                         name='email'
                         value={email}
                         onChange={(e) => onChange(e)}
@@ -48,10 +50,12 @@ const Login = ({ login, isAuthenticated }) => {
                         onChange={(e) => onChange(e)}
                     />
                 </div>
-                <input type='submit' className='btn btn-primary' value='Login' />
+                <Translate>
+                    {({ translate }) => <input type='submit' className='btn btn-primary' value={translate('login.login')}/>}
+                </Translate>
             </form>
             <p className='my-1'>
-        Dont't have an account? <Link to='/register'>Sign Up</Link>
+                <Translate id='login.dontHaveA' /> <Link to='/register'><Translate id='login.signInP' /></Link>
             </p>
         </Fragment>
     );
@@ -62,7 +66,7 @@ Login.prototype = {
     isAuthenticated: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 

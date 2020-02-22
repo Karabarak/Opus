@@ -1,0 +1,57 @@
+{
+    "landing": {
+        "title": ["Opus trial app", "Opus proovitöö"],
+        "description": ["Users management app", "Kasutajate haldamise rakendus"],
+        "signUp": ["Sign Up", "Registreeru"],
+        "login": ["Login", "Sisene"]
+    },
+    "navbar": {
+        "brand": ["Opus app", "Opus rakendus"],
+        "register": ["Register", "Registreeru"],
+        "login": ["Login", "Sisene"],
+        "logout": ["Logout", "Välju"],
+        "users": ["Users", "Kasutajad"]
+    },
+    "login": {
+        "signInHead": ["Sign In", "Sisene"],
+        "signInP": ["Sign Into Your Account", "Sisene"],
+        "dontHaveA": ["Dont't have an account?", "Ei ole kontot?"],
+        "login": ["Login", "Sisene"],
+        "signUp": ["Sign Up", "Registreeru"]
+    },
+    "register": {
+        "signUp": ["Sign Up", "Registreeru"],
+        "createAcc": [" Create Your Account", " Loo oma kasutaja"],
+        "alreadyHave": ["Already have an account? ", "Kasutaja juba olemas? "],
+        "register": ["Register", "Registreeru"],
+        "signIn": ["Sign In", "Sisene"],
+        "formEmail": ["Email Address", "Emaili aadress"],
+        "formPassword": ["Password", "Parool"],
+        "formConfirmPass": ["Confirm Password", "Kinnita parool"]
+    },
+    "users": {
+        "hello": ["Hello ", "Tere "],
+        "usersList": ["Users List", "Kasutajate nimekiri"],
+        "create": ["Create User", "Loo Kasutaja"]
+    },
+    "user": {
+        "nr": ["Nr.", "nr"],
+        "email": ["Email", "Email"],
+        "actions": ["Actions", "Tegevused"],
+        "details": ["Details", "Detailid"],
+        "delete": ["Delete", "Kustuta"]
+    },
+    "userDetails": {
+        "user": ["User", "Kasutaja"],
+        "log": ["log:", "logi:"],
+        "back": ["Back", "Tagasi"]
+    },
+    "createUser": {
+        "newUser": [" Create New User", " Loo uus kasutaja"],
+        "create": ["Create", "Loo"],
+        "formEmail": ["Email Address", "Emaili aadress"],
+        "formPassword": ["Password", "Parool"],
+        "formConfirmPass": ["Confirm Password", "Kinnita parool"],
+        "back": ["Back", "Tagasi"]
+    }
+}

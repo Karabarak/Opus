@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Translate } from 'react-localize-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -22,10 +23,10 @@ const UserDetails = ({ setAlert, getUser, match, user: { userDetails, loading, e
 
     return loading || userDetails == null ? <Spinner/> : <Fragment>
         <p className='lead'>
-            <i className="fa fa-user"></i> User { email } log:
+            <i className="fa fa-user"></i> <Translate id='userDetails.user' /> { email } <Translate id='userDetails.log' />
         </p>
         { logList }
-        <Link to='/users' className='btn btn-light'>Back</Link>
+        <Link to='/users' className='btn btn-light mt-1'><Translate id='userDetails.back' /></Link>
     </Fragment>;
 };
 

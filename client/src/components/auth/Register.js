@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Translate } from 'react-localize-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
-import PropTypes from 'prop-types'
 
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -33,42 +34,49 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1 className='large text-primary'>Sign Up</h1>
-            <p className='lead'><i className='fas fa-user'></i> Create Your Account</p>
+            <h1 className='large text-primary'><Translate id='register.signUp' /></h1>
+            <p className='lead'><i className='fas fa-user'></i><Translate id='register.createAcc' /></p>
             <form className='form' onSubmit={(e) => onSubmit(e)}>
                 <div className='form-group'>
-                    <input
-                        type='email'
-                        placeholder='Email Address'
-                        name='email'
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                    />
+                    <Translate>
+                        {({ translate }) => <input
+                            type='email'
+                            placeholder={translate('register.formEmail')}
+                            name='email'
+                            value={email}
+                            onChange={(e) => onChange(e)}
+                        />}
+                    </Translate>
                 </div>
                 <div className='form-group'>
-                    <input
-                        type='password'
-                        placeholder='Password'
-                        name='password'
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                        // minLength='8'
-                    />
+                    <Translate>
+                        {({ translate }) => <input
+                            type='password'
+                            placeholder={translate('register.formPassword')}
+                            name='password'
+                            value={password}
+                            onChange={(e) => onChange(e)}
+                        />}
+                    </Translate>
                 </div>
                 <div className='form-group'>
-                    <input
-                        type='password'
-                        placeholder='Confirm Password'
-                        name='password2'
-                        value={password2}
-                        onChange={(e) => onChange(e)}
-                        // minLength='8'
-                    />
+                    <Translate>
+                        {({ translate }) => <input
+                            type='password'
+                            placeholder={translate('register.formConfirmPass')}
+                            name='password2'
+                            value={password2}
+                            onChange={(e) => onChange(e)}
+                        />}
+                    </Translate>
                 </div>
-                <input type='submit' className='btn btn-primary' value='Register' />
+                <Translate>
+                    {({ translate }) => <input type='submit' className='btn btn-primary' value={translate('register.register')}/>}
+                </Translate>
             </form>
             <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
+                <Translate id='register.alreadyHave' />
+                <Link to='/login'><Translate id='register.signIn' /></Link>
             </p>
         </Fragment>
     );
