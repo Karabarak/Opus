@@ -44,14 +44,13 @@ Requirements met:
 * App is using scripts
 * Possibility to Register, Log in, view all users, delete users, see users details.
 * Email notification upon user deletion (postmarkapp response is logged in clientside console)
+* Frontend localization
 
 Requirements not met:
 * Using only javascript
 * Email validation not implemented
-* Frontend localization not implemented
 * Password recovery not implemented
 
 Additionally:
 * Frontend is responsive
-* Using fontawesome for additional beauty
 * Using mongoDB(mongoDB Atlas)
