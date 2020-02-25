@@ -55,7 +55,7 @@ const Login = ({ login, isAuthenticated }) => {
                 </Translate>
             </form>
             <p className='my-1'>
-                <Translate id='login.dontHaveA' /> <Link to='/register'><Translate id='login.signInP' /></Link>
+                <Translate id='login.dontHaveA' /> <Link to='/register'><Translate id='login.signUp' /></Link>
             </p>
         </Fragment>
     );

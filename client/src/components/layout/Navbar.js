@@ -9,8 +9,8 @@ const Navbar = ({
     auth: { isAuthenticated, loading },
     logout,
     setActiveLanguage,
-    languages,
-    activeLanguage }) => {
+    languages
+}) => {
     const authLinks = (
         <Fragment>
             <li>

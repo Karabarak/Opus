@@ -5,11 +5,12 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const User = require('../../models/Users');
+const { emailVerify } = require('../../utils/emailVerif');
 
 const router = new express.Router();
 
 // @route  GET api/auth
-// @desc   Test route
+// @desc   Get user
 // @access Public
 router.get('/', auth, async (req, res) => {
     try {
@@ -19,6 +20,43 @@ router.get('/', auth, async (req, res) => {
     catch (err) {
         console.log(err.message);
         res.status(500).send('Server error');
+    }
+});
+
+// @route  GET api/auth/:token
+// @desc   Verify user email
+// @access Public
+router.get('/:token', async (req, res) => {
+    const { token } = req.params;
+    if (!token) {
+        return res.status(401).json({ msg: 'No token, authorization denied' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, config.get('jwtEmailSecret'));
+        const user = await User.findById(decoded.user.id);
+        user.emailVerified = true;
+
+        const payload = {
+            user: {
+                id: user.id
+            }
+        };
+
+        user.save();
+
+        jwt.sign(
+            payload,
+            config.get('jwtSecret'),
+            { expiresIn: 360000 },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ msg: `User ${user.email} verified, please log in`, token });
+            }
+        );
+    }
+    catch (err) {
+        res.status(401).json({ msg: 'Token is not valid' });
     }
 });
 
@@ -53,6 +91,12 @@ async (req, res) => {
             return res
                 .status(400)
                 .json({ errors: [{ msg: 'Invalid Credentials' }] });
+        }
+
+        if (!user.emailVerified) {
+            return res
+                .status(400)
+                .json({ errors: [{ msg: 'Please verify email' }] });
         }
 
         const payload = {

@@ -15,7 +15,7 @@
     "login": {
         "signInHead": ["Sign In", "Sisene"],
         "signInP": ["Sign Into Your Account", "Sisene"],
-        "dontHaveA": ["Dont't have an account?", "Ei ole kontot?"],
+        "dontHaveA": ["Don't have an account?", "Ei ole kontot?"],
         "login": ["Login", "Sisene"],
         "signUp": ["Sign Up", "Registreeru"]
     },

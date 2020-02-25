@@ -1,6 +1,7 @@
 {
     "mongoURI": "mongodb+srv://opus:Opus1@cluster0-tkhze.mongodb.net/test?retryWrites=true&w=majority",
     "jwtSecret": "jwtsecrettoken",
+    "jwtEmailSecret": "jwtemailsecret",
     "postmarkCurl": "https://api.postmarkapp.com/email",
     "postmarkKey": "POSTMARK_API_TEST"
 }

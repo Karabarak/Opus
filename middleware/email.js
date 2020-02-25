@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
                 'X-Postmark-Server-Token': config.get('postmarkKey')
             },
             data: {
-                From: 'norifications@userapp.ee',
+                From: 'notifications@userapp.ee',
                 To: user.email,
                 Subject: 'Users App',
                 HtmlBody: `<html><body><p>Your Users App acccount ${user.email} has been deleted.</p></body></html>`

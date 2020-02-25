@@ -10,6 +10,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    emailVerified: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     log: {
         type: Array,
         default: new Date()

@@ -5,6 +5,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const email = require('../../middleware/email');
+const { emailVerify } = require('../../utils/emailVerif');
 
 const router = new express.Router();
 
@@ -40,7 +41,6 @@ async (req, res) => {
             password
         });
         // Encrypt password
-
         const salt = await bcrypt.genSalt(10);
 
         user.password = await bcrypt.hash(password, salt);
@@ -55,11 +55,13 @@ async (req, res) => {
 
         jwt.sign(
             payload,
-            config.get('jwtSecret'),
-            { expiresIn: 360000 },
-            (err, token) => {
+            config.get('jwtEmailSecret'),
+            { expiresIn: 3600 },
+            async (err, token) => {
                 if (err) throw err;
-                res.json({ token });
+                // Sent email verification with token
+                const emailVerifRes = await emailVerify(user, token);
+                res.json({ VerUrl: `localhost:5000/api/auth/${token}`, emailVerifRes: emailVerifRes.config.data, msg: 'Please check your email and verify.' });
             }
         );
     }
@@ -78,7 +80,6 @@ router.get('/', auth, async (req, res) => {
         res.json(users);
     }
     catch (err) {
-        console.log(err.message);
         res.status(500).send('Server error');
     }
 });
@@ -151,27 +152,20 @@ router.post(
             console.log(err.message);
             res.status(500).send('Server error');
         }
-});
+    }
+);
 
 // @route  DELETE api/users/:id
 // @desc   Delete a user
 // @access Private
 router.delete('/:id', [auth, email], async (req, res) => {
     try {
-        // const user = await (await User.findById(req.params.id));
-
-        // if (!user) {
-        //     return res.status(404).json({ msg: 'User not found' });
-        // }
         const { user } = req;
         const { notificationRes } = req;
         await user.remove();
         res.json({ oldUserId: user._id, notificationRes, msg: 'User deleted' });
     }
     catch (err) {
-        // if (err.kind === 'ObjectId') {
-        //     return res.status(404).json({ msg: 'User not found' });
-        // }
         res.status(500).send('Server error');
     }
 });
