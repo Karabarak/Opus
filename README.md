@@ -48,11 +48,12 @@ Requirements met:
 * Upon creating new user(from users list) postmark response and email verification link from that new user is logged in client console, no actual email is sent.
 * Frontend localization
 * Users list pagination
+* Password recovery, link on Sign In page
+* Upon reseting password, postmark response is logged in client console, new password is "newpassword", no actual email is sent.
 
 Requirements not met:
 * No actual notification emails are sent, due to using postmark test API key.
 * Using only javascript
-* Password recovery not implemented
 
 Additionally:
 * Frontend is responsive

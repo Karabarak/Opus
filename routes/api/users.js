@@ -6,6 +6,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const email = require('../../middleware/email');
 const { emailVerify } = require('../../utils/emailVerif');
+const { passwordReset } = require('../../utils/passwordReset');
 
 const router = new express.Router();
 
@@ -67,6 +68,34 @@ async (req, res) => {
     }
     catch (err) {
         console.log(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// @route  PATCH api/users
+// @desc   Reset user password
+// @access Public
+router.patch('/', async (req, res) => {
+    try {
+        const userEmail = req.body.email;
+        const user = await User.findOne({ email: userEmail });
+        if (!user) {
+            res.status(404).json({ msg: 'No user with such email' });
+        }
+        else {
+            // Generate new password
+            const password = 'newpassword';
+            const salt = await bcrypt.genSalt(10);
+
+            user.password = await bcrypt.hash(password, salt);
+
+            await user.save();
+            const postmarkRes = await passwordReset(user, password);
+
+            res.send({ msg: `Password for user ${user.email} is reset, check email for new password`, postmark: postmarkRes.data });
+        }
+    }
+    catch (err) {
         res.status(500).send('Server error');
     }
 });

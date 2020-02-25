@@ -83,7 +83,7 @@ export const login = (email, password) => async (dispatch) => {
         dispatch(loadUser());
     }
     catch (err) {
-        const errors = err.response.data.errors;
+        const { errors } = err.response.data;
 
         if (errors) {
             errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
@@ -95,7 +95,27 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
+// Reset password
+export const reset = (email) => async (dispatch) => {
+    const body = JSON.stringify(email);
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    try {
+        const res = await axios.patch('/api/users', body, config);
+        const msg = res.data.msg;
+        dispatch(setAlert(msg))
+        console.log(res.data.postmark);
+    }
+    catch (err) {
+        const error = err.response.data.msg;
+        dispatch(setAlert(error, 'danger'));
+    }
+};
+
 // Logout
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
     dispatch({ type: LOGOUT });
 };

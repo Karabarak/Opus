@@ -10,6 +10,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Landing from './components/layout/Landing';
+import PasswordReset from './components/auth/PasswordReset';
 import Users from './components/users/Users';
 import UserDetails from './components/users/UserDetails';
 import CreateUser from './components/users/CreateUser';
@@ -50,6 +51,7 @@ const App = () => {
                         <section className='container'>
                             <Alert />
                             <Switch>
+                                <Route exact path='/passwordreset' component={PasswordReset} />
                                 <Route exact path='/register' component={Register} />
                                 <Route exact path='/login' component={Login} />
                                 <PrivateRoute exact path='/users' component={Users} />

@@ -17,7 +17,9 @@
         "signInP": ["Sign Into Your Account", "Sisene"],
         "dontHaveA": ["Don't have an account?", "Ei ole kontot?"],
         "login": ["Login", "Sisene"],
-        "signUp": ["Sign Up", "Registreeru"]
+        "signUp": ["Sign Up", "Registreeru"],
+        "forgot": ["Forgot your password?", "Unustasid parooli?"],
+        "reset": ["Reset", "Taasta"]
     },
     "register": {
         "signUp": ["Sign Up", "Registreeru"],
@@ -53,5 +55,11 @@
         "formPassword": ["Password", "Parool"],
         "formConfirmPass": ["Confirm Password", "Kinnita parool"],
         "back": ["Back", "Tagasi"]
+    },
+    "passwordReset": {
+        "passwordReset": ["Reset password", "Taasta parool"],
+        "description": [" Enter your user email", " Sisesta oma kasutaja email"],
+        "placeholder": ["Email Address", "Emaili aadress"],
+        "button": ["Reset", "Taasta"]
     }
 }
