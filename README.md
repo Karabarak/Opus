@@ -43,7 +43,8 @@ Requirements met:
 * Using JSON Web Token for authentication
 * App is using scripts
 * Possibility to Register, Log in, view all users, delete users, see users details.
-* Email notification upon user deletion (postmarkapp response is logged in clientside console)
+* Email verification upon registration (verification link is logged in clientside console, no actial email is sent)
+* Email notification upon user deletion (postmarkapp response is logged in clientside console, no actual email is sent)
 * Frontend localization
 
 Requirements not met:
