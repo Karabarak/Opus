@@ -39,7 +39,7 @@ const Navbar = ({
             <li>
                 <i className="fas fa-flag ml-1"></i>
                 {languages.map((lang) => (
-                    <a key={lang.code} onClick={() => setActiveLanguage(lang.code)}>
+                    <a href="# " key={lang.code} onClick={() => setActiveLanguage(lang.code)}>
                         {lang.code.toUpperCase()}
                     </a>
                 ))}

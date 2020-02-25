@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteUser } from '../../actions/user';
 
-const User = ({ deleteUser, users, currentUser }) => {
+const User = ({ deleteUser, users, currentUser, adder }) => {
     const userList = users.map((u, i) => (
         <tr key={u._id}>
-            <td>{i + 1}</td>
+            <td>{(i + 1) + adder}</td>
             <td>{u.email}</td>
             <td>
                 <Link to={`/user-details/${u._id}`} className='btn btn-primary'>

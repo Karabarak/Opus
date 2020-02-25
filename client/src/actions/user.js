@@ -100,6 +100,7 @@ export const deleteUser = (id, currentUserId, users) => async (dispatch) => {
             if (id === currentUserId) {
                 dispatch({ type: LOGOUT });
             }
+            dispatch(getUsers());
         }
         catch (err) {
             dispatch({

@@ -47,9 +47,10 @@ Requirements met:
 * Email notification upon user deletion (postmarkapp response is logged in clientside console, no actual email is sent)
 * Upon creating new user(from users list) postmark response and email verification link from that new user is logged in client console, no actual email is sent.
 * Frontend localization
+* Users list pagination
 
 Requirements not met:
-* No actual notification emails are sent, due to useing postmark test API key.
+* No actual notification emails are sent, due to using postmark test API key.
 * Using only javascript
 * Password recovery not implemented
 
