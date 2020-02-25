@@ -58,3 +58,6 @@ Requirements not met:
 Additionally:
 * Frontend is responsive
 * Using mongoDB(mongoDB Atlas)
+
+## Notes
+Alot of new and interesting has been learned during development of this app. Unfortunately can't say that code is perfect. It needs alot of refactoring and abstraction, bugs will be crawling out as well. But I believe I learned alot of new concepts and next project will be that much better. Also looked into typescript and can see immense potential in using it. Looking forward to do my next project using typescipt.
