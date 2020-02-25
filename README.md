@@ -49,7 +49,6 @@ Requirements met:
 
 Requirements not met:
 * Using only javascript
-* Email validation not implemented
 * Password recovery not implemented
 
 Additionally:
