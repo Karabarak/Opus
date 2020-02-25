@@ -42,12 +42,14 @@ Requirements met:
 * Frontend SPA with REACT + Redux
 * Using JSON Web Token for authentication
 * App is using scripts
-* Possibility to Register, Log in, view all users, delete users, see users details.
+* Possibility to Register, Log in, view all users, delete users, create users, see users details.
 * Email verification upon registration (verification link is logged in clientside console, no actial email is sent)
 * Email notification upon user deletion (postmarkapp response is logged in clientside console, no actual email is sent)
+* Upon creating new user(from users list) postmark response and email verification link from that new user is logged in client console, no actual email is sent.
 * Frontend localization
 
 Requirements not met:
+* No actual notification emails are sent, due to useing postmark test API key.
 * Using only javascript
 * Password recovery not implemented
 

@@ -146,7 +146,23 @@ router.post(
 
             await user.save();
 
-            res.send({ msg: `User ${user.email} created` });
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            jwt.sign(
+                payload,
+                config.get('jwtEmailSecret'),
+                { expiresIn: 3600 },
+                async (err, token) => {
+                    if (err) throw err;
+                    // Sent email verification with token
+                    const emailVerifRes = await emailVerify(user, token);
+                    res.json({ VerUrl: `localhost:5000/api/auth/${token}`, emailVerifRes: emailVerifRes.config.data, msg: `User ${user.email} created` });
+                }
+            );
         }
         catch (err) {
             console.log(err.message);

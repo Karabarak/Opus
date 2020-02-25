@@ -62,10 +62,13 @@ export const createUser = ({ email, password }) => async (dispatch) => {
         };
 
         const body = JSON.stringify({ email, password });
-        await axios.post('api/users/user', body, config);
+        const res = await axios.post('api/users/user', body, config);
 
         dispatch(setAlert('User Created', 'success'));
         history.push('/');
+        console.log(res.data.emailVerifRes);
+        console.log(res.data.msg);
+        console.log(res.data.VerUrl);
     }
     catch (err) {
         const errors = err.response.data.errors;
